@@ -1,0 +1,13 @@
+prefix: "&bACMine &8→" # optional
+
+blocks: # required line
+  stone: # Block name - You can write Random.
+    block_id: 1 # Block id - For those playing 1.8, the number that appears next to the item when you press f3 + h.
+    block_data: 0 # Block data - For those who play 1.8 in the same way, after doing f3 + h, if there is a number after / next to the id, you must enter it here (you do not need to enter 0s)
+    chance: 100 # Chance - Chances of the command working when breaking the block
+    command: "say %player%" # %player% - Event player.
+  diamond_ore:
+    block_id: 56
+    block_data: 0
+    chance: 100
+    command: "say %player%"

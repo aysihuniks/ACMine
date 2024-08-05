@@ -1,0 +1,8 @@
+name: ACMine
+version: '${project.version}'
+main: nesoi.network.ACMine
+author: "aysihuniks"
+commands:
+  acmine:
+    description: "No description. cuz usage so basic :)"
+    usage: /acmine reload
