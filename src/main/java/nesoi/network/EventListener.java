@@ -10,6 +10,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 
+import java.util.List;
 import java.util.Set;
 
 public class EventListener implements Listener {
@@ -39,14 +40,16 @@ public class EventListener implements Listener {
                 int configBlockId = blockConfig.getInt("block_id");
                 byte configBlockData = (byte) blockConfig.getInt("block_data");
                 int chance = blockConfig.getInt("chance");
-                String command = blockConfig.getString("command");
+                List<String> commands = blockConfig.getStringList("commands");
 
                 Material configuredBlock = getMaterialFromId(configBlockId);
 
                 if (configuredBlock != null && brokenBlock == configuredBlock && blockData == configBlockData) {
                     if (Math.random() * 100 < chance) {
-                        String finalCommand = command.replace("%player%", player.getName());
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), finalCommand);
+                        for (String command : commands) {
+                            String finalCommand = command.replace("%player%", player.getName());
+                            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), finalCommand);
+                        }
                     }
                 }
             }
